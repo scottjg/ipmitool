@@ -1,0 +1,486 @@
+version 1.8.12 released 2012-08-09
+	* Added IPMB dual bridge support (no need for driver support)
+	* Enable compiler warnings and resolve all compiler warning so that
+		ipmitool compiles and links with no warning or error messages
+	* add ipmishell line to configure
+	* fail configure when no curses or readline is found
+	* support sensor bridging in free interface
+	* applied fix for issue #2865160 (AIX build)
+	* Document the ipmitool dcmi commands in the ipmitool man page
+	* Document that some commands are blocked by OpenIPMI.   ID 2962306
+	* Document the -N and -R options per tracker ID 3489643
+	* fix manpage misdocumentation on cipher suite privilige configuration
+	* Add build support for Dell OEM commands
+	* Add new Dell OEM commands and update man page
+	* added hpm and fwum in man page
+	* man page update for fwum and hpm commands
+	* Added documentation for 'ime' operating mode, used to update Intel ME.
+	* add new -Y option to prompt user to enter kgkey
+	* Add DCMI module (Data Center Management Interface)
+	* fixed oem/iana data type to allow 24 bits definition
+	* Fixed AMC point-to-point record parsing in FRU
+	* Fixed detection of packing support in GCC
+	* Added packing support detection magic on all packed structures
+		in project
+	* Dell specific mac sub command is updated to support the latest 12G
+		Dell servers.  Support for virtual mac is also implemented.
+	* Use consistent netfn/cmd for getsysinfo command
+	* Add Dell OEM network commands
+	* Resolve incorect Board Mfg Data due to incorrect date constant
+	* Update ipmi_fru.h to SMBIOS spec 2.6.1 - ID 2916398
+	* Support for analog readings in discrete sensors on HP platforms.
+	* Change device id mask (IPM_DEV_DEVICE_ID_REV_MASK) 0x07 for 0x0F.
+		As per in IPMI spec V2:
+	* Added PICMG clock e-keying and bused resource control identifiers
+	* Added PICMG major version (ATCA/AMC/uTCA) identifiers
+	* Correct Threshold/Discrete Sensor Display - Patch Tracker ID 3508759
+	* Sensor units now handle percentage units - ID 3014014
+	* Fixes ID 3421347 Sensor list command should use channel field from SDR
+	* Added packing directive for ARM cross compile with GCC 3.4.5,
+		otherwise the sdr structures gets padded and the pointer cast
+		result in incorrect alignement
+	* Added 'sdr fill sensors nosats' support to speed up SDR discovery
+	* Added SDR name display during discovery (with -v)
+	* Added support for sensor types - Processor related sensor
+		type 0x07, system incharectorization 0x20, Memory sensor type.
+	* Give more description for SEL which is generated for Uncorrectable
+		ECC and errors with respect to each Memory Bank,Card or DIMM.
+		The Sensor type supporting this are 0x0C and 0x10.
+	* Add more details about Version Change event (source of
+		firmware update)
+	* enhanced PICMG fru control
+	* Integrated Andy Wray's DDR3 SPD parser patch
+	* Adds function str2uint() to convert from string to uint32_t with
+		checks for valid input.
+	* Fix possible buffer overflow in buf2str()
+	* Fixes ID 3485004 - misuse of strtol()
+	* Replaces calls to strtol() with str2uchar() calls and adds error
+		messages if invalid input is given.
+	* Don't overwite the iflags bits prior to setting the boot parameters.
+		This fixes ipmitool so that
+		chassis bootdev bios clear-cmos=yes
+		will correctly clear the bios cmos.
+	* Clarify DCMI get limit activation (add if activate or not).
+	* Bug fixes for delloem lan command. This includes the support for 12G
+		Dell license and 12G LAN Specific command.
+	* delloem commands should not be executed before parsing command line.
+	* Fix stack overflow in delloem setled
+	* Fix delloem powermonitor on big-endian platforms.
+	* ipmitool delloem powermonitor command should convert data from
+		network-format to the native one, otherwise it shows garbage
+		on ppc/ppc64 platform.
+	* Add ipmi_getsysinfo command
+	* Add support for drive backplane SetLED functionality
+	* Fix for Platform Event Message incorrect Generator ID
+	* Fix fru print so that it will display FRU info from satellite
+		controllers.
+	* Add support for AMC type 17h record.
+	* Fix in fru edit.   It is now possible to edit field 0 of sections
+	* New FRU get OEM record command
+	* fixed segfault for fru edit when "field id" is not supported and
+		added user feedback for string substitution(success or failure)
+	* Improvement to hpm upgrade during activation. This resolves issue
+		where activation seems to have failed because ipmitool received
+		an unsupported completion code.
+	* hpm Fixes for multi-platform support.
+	* hpm Fix for timeouts during firmware rollback. If completion code
+		is C3, wait till timeout has expired before reporting it.
+	* hpm During manual rollback, code now gets target capabilities
+		instead of using a default timeout of 60 seconds.
+	* Added firmware auxilliary bytes to hpm outputs
+	* hpm Add support for BIG Buffer (Use when -z option is used)
+	* Fix the case where ipmitool loses the iol connection during the upload
+		block process.  Once IPMITool was successfully sent the first
+		byte, IPMITool will not resize the block size.
+	* Fix the problem when we try to upgrade specific component and the
+		component is already updated,
+	* updated HPM firmware agent to version 1.04
+	* Fix exit code to return zero on '-o list' or '-o help' option
+	* limit length of user name and password that can be supplied by user.
+		Password is limited to 16 bytes, resp. 20 bytes, for LAN, resp.
+		LAN+, interface. User name is limited to 16 bytes, no interface
+		limitations.  ID 3184687, ID 3001519
+	* Add retry / timeout options for LAN
+	* Changed default cipher suite to 1 instead of 3 for iol20
+	* added fix for tracker ID 2849300 "Incorrect Firmware Revision"
+	* avoid reopening the interface when already opened
+	* Remove message for unsupported PEF capabilities that return valid
+		CC (80h)
+	* Added OEM byte (47) to verbose output
+	* Add option to provide a list when filling sdr repository
+	* SDR discovery speedups
+	* Added support for Dell specific sensors
+	* Fix segmentation fault on unrecognize OEM events.
+	* changed SEL timestamp formatting for 'preinit' SEL entries, allowing
+		the number of seconds to be displayed.
+	* Added sensor raw data in verbose mode. Useful for OEM sensor type.
+	* Add sensor hysteresis (positive & negative) to the following command
+	    ipmitool sensor -v
+	* Fixes bug ID 3484936 - missing user input validation
+	* Add missing RMCP+ auth type strings
+	* Add new Kontron Product in ipmi_strings for product ID.  Kontron
+		KTC5520/EATX Server Motherboard with integrated iBMC/KVM/VM
+		added identification support for Kontron AT8050 ATCA board
+	* Constrain setting of the username to no greater than 16 characters
+		per the IPMI specification.   ID 3001519
+	* Constrain User ID between 1 and 63.  ID 3519225
+	* Fixes ID 3485340 - user input not handled in 'lib/ipmi_user.c'
+	* Fixes ignorance of existing daemon PID file which results in PID being
+		overwritten.  Adds proper umask() before writing PID file.
+	* applied fix for ID 2865111 (AIX build)
+	* Fix a proplem when using bridged IPMI commands on the lanplus
+		interface (-I lanplus with -b -t or -m switches)  resulting in
+		"Close Session command failure".
+	* Add fix with usage of CFh (duplicate request).  Usefull for
+		slow commands
+	* Fix issue with sequence number. (Speed up transfer)
+
+version 1.8.11 released 2009-02-25
+	* Fix new GCC compilation issues in regards to Packing
+	* Fix Tracker bug #1642710 - ipmi_kcs_drv being loaded/unloaded
+		for 2.4 kernel instead of ipmi_si_drv driver module
+	* New -y option added to allow specification of kg keys with
+		non-printable characters
+	* New -K option added to allow kgkey settings via environmental
+		variable IPMI_KGKEY
+	* Generic device support added for EEPROM with SDR Type 10h (gendev)
+	* Fix to lan-bridging for a double-bridging crash and to fix
+		an issue with bridging multiple concurrent requests and
+		erroneous handling of raw Send Message
+	* Lanplus fix for commands like 'sensor list' without the -t option
+		causing wrong double bridged requests of a sensor is located
+		on another satellite controller
+	* Fix lan and lanplus request list entry removal bugs
+	* Fix non-working issue when trying to send a bridge message with
+		Cipher 3
+	* Change bridge message handling to reuse command ipmi_lan_poll_recv
+	* Added PICMG 2.0 and 2.3 support
+	* Fix PICMG (ATCA) extension verification and reversal of BCD encoded
+		values for "major" and "minor" fields
+	* Add IANA support for Pigeon Point
+	* Add OEM SW/FW Record identification
+	* Fix to include I2C and LUN addresses so sensors are correctly managed
+	* Patch ID 1990560 to get readings from non-linear analog sensors
+	* Add support for SOL payload status command
+	* SOL set parameter range checking added
+	* Fixed SOL activate options usage 
+	* Fixed crashes when parsing 'sol payload' and 'tsol' cmds (#216967)
+	* Added retries to SOL keepalive
+	* Fixed wrong mask values for Front Panel disable/enable status
+	* Add support to access fru internal use area
+	* Add support for new PICMG 3.0 R3.0 (March 24, 2008) to allow
+		blocks of data within the FRU storage area to be write
+		protected.
+	* Fix node reporting in GUID; Tracker bug #2339675
+	* Fix watchdog use/action print strings
+	* Fix endian bug in SDR add from file; Tracker bug #2075258
+	* Fix crash when dumping SDRs in a file and there's an error
+		getting an SDR; improve algorithm for optimal packet size
+	* Fix occasional SDR dump segfault; #1793076
+	* Allow ipmitool sel delete to accept hex list entry numbers
+	* Fix SEL total space reporting.
+	* Fix for garbage sensor threshold values reported when none 
+		returned.  Tracker Bug #863748
+	* ipmievd change to Monitor %used in SEL buffer and log warnings when
+		the buffer is 80% and 100% full
+
+version 1.8.10 released 2008-08-08
+	* Added support for BULL IANA number.
+	* Fixed contrib build so the oem_ibm_sel_map file gets included in 
+		rpm builds again.
+	* Added support for Debian packages to be built from CVS
+	* Fix for sdr and sel timestamp reporting issues
+	* Fix for discrete sensor state print routines to address state
+		bits 8-14
+	* Change ipmi_chassis_status() to non-static so it can be used
+		externally
+	* Added retries to SOL keepalive
+	* Fix to stop sensor list command from reporting a failure due 
+		to missing sensor
+	* Fix bug in sdr free space reporting
+	* Add support for IANA number to vendor name conversion for many
+		vendors 
+	* Fix segfault bug in lan set command
+	* Fix bug in population of raw i2c wdata buffer
+	* Fix bug in ipmb sensor reading
+	* Fix misspellings, typos, incorrect strncmp lengths, white space
+	* Update/fix printed help and usages for many commands
+	* Add and update support for all commands in ipmitool man page
+	* Fix for lanplus session re-open when the target becomes unavailable
+		following a fw upgrade activation
+	* Add support for watchdog timer shutoff, reset, and get info
+	* Add support for more ibm systems in oem_ibm_sel_map
+	* Add more JEDEC support info for DIMMs; decrease request size
+		for DIMM FRU info to 16 bytes at a time to allow more
+		DIMM FRUs to respond.
+	* Fix to change hpmfwupg to version 1.02; fix to reduce hpmfwupg 
+		buffer length more aggressively when no response from iol
+	* Fix HPM firmware activation via IOL; fake a timeout after IOL
+		session re-open to force get upgrade status retry;
+		Added retries on 0xD3 completion code
+	* Add support for freeipmi 0.6.0; adjust autoconf for changes
+	* Fix for oemval2str size
+	* Add support for product name resolution in mc info
+	* Fix FRU display format
+	* Added PICMG ekeying analyzer module support (ekanalyzer); 
+		display point to point physical connectivity and power 
+		supply information between carriers and AMC modules; 
+		display matched results of ekeying match between an 
+		on-carrier device and AMC module or between 2 AMC modules 
+	* Fix AMC GUID display support
+	* Improved amcportstate operations
+	* Added resolution for new sensor types
+	* Fix segfault in SOL
+	* Fix bug that caused infinite loop on BMCs with empty SDRs
+	* Fix to move out Kontron OEM sensor resolution for other OEMs
+		which could lead to bad event descriptions
+	* Add new FRU edit mode thereby allowing serial numbers, etc. to be
+		changed; improvements to OEM edit mode
+	* Added SPD support for parms: channel number, max read size
+	* Add SDR support for adding SDR records from a dumped file,
+		clearing SDR, adding partial SDR records
+	* Add updates and fixes to hpmfwupg: upload block size to 32 bytes 
+		for KCS, handle long response option, implement rollback 
+		override, garbage output fix
+	* Add double bridge lan support , fix bridging issue
+	* Add HPM support to pre-check which components need to be skipped
+	* Fix autodetection of maximum packet size when using IPMB
+	* Add new Kontron OEM command to set the BIOS boot option sequence
+	* Add support for dual-bridge/ dual send message
+	* Add auto-detect for local IPMB address using PICMG 2.X extension
+	* Add support for HPM.1 1.0 specification compliance
+	* Fix for improper lan/lanplus addressing
+	* Added transit_channel and transit_addr to ipmi_intf struct
+	* Fix bad password assertion bug due to rakp2 HMAC not being checked
+		properly
+	* Added ability to interpret PPS shelf manager clia sel dump
+	* Corrected PICMG M7 state event definition macros
+	* Added FRU parsing enhancements
+	* Added "isol info", "isol set" and "isol activate" commands
+		to support Intel IPMI v1.5 SOL functionality. Removed
+		"isol setup" command.
+	* Fix bug in ipmi_lan_recv_packet() in lan and lanplus interfaces.
+	* Fix bug in "chassis poh" command.
+	* Fix HPM.1 upgrade to apply to only given component when instructed
+		to do so
+	* Added configure auto-detection if dual bridge extension
+		is supported by OpenIPMI
+
+version 1.8.9 released 2007-03-06
+	* Added initial AMC ekey query operation support
+	* Improvements to ekeying support (PICMG 3.x only)
+	* Added initial interactive edition support for multirec; added IANA
+		verification before interpreting PICMG records.
+	* Added edit support for AMC activation "Maximum Internal Current"
+	* Fix bug generating garbage on the screen when handling GetDeviceId
+		and sol traffic occurs
+	* Added ability to map OEM sensor types to OEM description string using 
+		IANA number; moved IANA number table
+	* Fix lan set access command to use value already saved within
+		parameters for PEF and authentication
+	* Fix bug in cmd ipmitool lan stats get 1
+	* Add support to allow ipmitool/ipmievd to target specific device
+		nodes on multi-BMC systems
+	* Add support for name+privilege lookup for lanplus sessions
+	* Fix time_t conversion bug for 64-bit OS
+	* Added prefix of hostname on sel ipmievd sessions
+	* Fixed FWUM Get Info
+	* Fix ipmievd fd closing bug
+	* Add set-in-progress flag support to chassis bootdev
+	* Added new chassis bootdev options
+	* Add sol payload enable/disable comman
+	* Fix SOL set errors when commit-write not supported
+	* Fix reset of session timeout for lanplus interface
+	* Fixed lan interface accessibility timeout handling
+	* Fix bug with Function Get Channel Cipher Suites command when 
+		more than 1 page used.
+	* Fix missing firmware firewall top-level command
+	* Fix bug in SOL keepalive functionality
+	* Fix SOLv2 NACK and retry handling for Intel ESB2 BMC
+	* Added ipmi_sel_get_oem_sensor* APIs
+	* Added HPM.1 support 
+	* Fix segfault when incorrect oem option supplied
+	* Fix bus problem with spd command
+	* Fix segfault in SOL when remote BMC does not return packet
+	* Adjust packet length for AMC.0 retricting IPMB packets to 32 bytes
+	* Added lan packet size reduction mechanism
+	* Fix bug with sendMessage of bad length with different target
+	* Fix for big endian (PPC) architecture
+	* NetBSD fixes
+	* Fix segfault and channel problem with user priv command
+	* Add support for bus/chan on i2c raw command
+	* Add freeipmi interface support
+	* Add remote spd printing
+	* Add better detection of linux/compiler.h to config
+	* Makefile changes to fix makedistcheck, etc. 
+
+version 1.8.8
+	* Fix segfaults in sensor data repository list
+	* Fix ipmievd to open interface before daemonizing
+	* Fix IPMIv1.5 authtype NONE to ignore supplied password
+	* Fix cipher suite display bug in lan print
+	* Fix typo in IPMIv2 SOL output when sending break
+	* Fix improper LUN handling with Tyan SOL
+	* Add LUN support to OpenIPMI interface
+	* Add support for Kontron OEM commands
+	* Update to Kontron Firmware Update command
+
+version 1.8.7
+	* Remove nuclear clause from license
+	* Add Sun OEM command for blades
+	* Increase argument size for raw commands in shell/exec
+	* Fix handling of LUNs for LAN interfaces
+	* Add IPMIv2 SOL loopback test
+	* Add support for IBM OEM SEL messages
+	* Disable file paranoia checks on read files by default
+	* Support IPMIv2 SOL on older Intel boxes
+	* Display message and exit if keepalive fails during SOL
+	* Add support for setting VLAN id and priority
+	* Add support for FreeBSD OpenIPMI-compatible driver
+	* Add support for IPMIv2 Firmware Firewall
+	* Fix gcc4 compile warnings
+	* Make ipmievd generate pidfile
+	* Add initscripts for ipmievd
+
+version 1.8.6
+	* Fix memory corruption when sending encrypted SOL traffic
+	* Add keepalive timer to IPMIv2 SOL sessions
+
+version 1.8.5
+	* Add support for settable SOL escape character with -e option
+	* Add support for Kg BMC key for IPMIv2 authentication with -k option
+	* Add support for Tyan IPMIv1.5 SOL with tsol command
+	* Add support for PICMG devices
+	* Add support for OEM SEL event parsing
+	* Add support for command bridging over lan and lanplus interfaces
+	* New 'chassis selftest' command
+	* Many bufxies and patches from contributors
+
+version 1.8.3
+	* Add support for 'sel readraw' and 'sel writeraw' commands.
+	* Add support for entering NetFn as a string for RAW commands.
+	* Add support for appending distro tag to integrated RPM builds.
+	* Fix LAN parameter printing to handle Invalid Data Field response
+	without errors.
+	* Add 5ms delay to IPMIv2 SOL retry packets
+	* IPMIv2 interface will now correctly set session privilege level
+	to requested level after session is opened.
+
+version 1.8.2 (released May 18 2005)
+	* Fix FRU reading for large (>255 bytes) areas.
+	* Overhaul to ipmievd to support SEL polling in addition to OpenIPMI.
+	* Fix LAN parameter segfault when no Ciphers supported by BMC.
+	* Fix IPMIv2 support on Intel v2 BMCs (use -o intelplus).
+	* Separate option parsing code from main ipmitool source file.
+	* Add raw I2C support with IPMI Master Read-Write command.
+	* Add support for new 'sdr elist' extended output format.
+	* Add support for listing sensors by type with 'sdr type' command.
+	* Add support for new 'sel elist' extended output format that
+	  cross-references events with sensors.
+	* Add support for sending dynamically generated platform events
+	  based on existing sensor information.
+	* New '-S' argument to read local SDR cache created with 'sdr dump'.
+	* Updated manpage for ipmitool and ipmievd.
+
+version 1.8.1
+	* ipmievd installs in /usr/sbin
+
+version 1.8.0
+	* Fix IPMIv2.0 issues
+	* Fix chassis boot parameter support
+	* Add support for linear sensors
+
+version 1.7.1
+	* Update bmc plugin to work with new Solaris bmc driver (new ioctl
+	  for interface detection and new STREAMS message-based interface)
+
+version 1.7.0
+	* Propogate errors correctly so exit status will be useful
+	* More consistent display of errors including completion code text
+	* Errors and debug is send to stderr now
+	* New "sel get" command that will print details about SEL entry
+	  and corresponding SDR records as well as FRUs via entity association
+	* Improved event generator, now supports reading events from text file
+	* New "-o oemtype" option for specifying OEM boards
+	  exsting types are "supermicro" and "intelwv2"
+	* New PEF subsystem from Tim Murphy at Dell
+	* New "bmc" plugin for Solaris 10 x86
+	* Many bugfixes and contributed patches
+
+version 1.6.2
+	* Support for Supermicro BMC OEM authentication method
+
+version 1.6.1
+	* Fix minor problem with LAN parameter setting
+
+version 1.6.0
+	* Add a README file
+	* Add Solaris x86 interface plugin
+	* Add support for building Solaris packages
+	* Fix segfault when doing "sel list" (from Matthew Braithwaite)
+	* Fix "chassis identify" on some BMCs (from ebrower@sourceforge)
+	* Add command "bmc info" and related output (from ebrower@sourceforge)
+	* Add support for IPMIv2 and Serial-over-LAN from Jeremy at Newisys
+	* Add support for building RPMs as non-root user
+	* Add new "shell" and "exec" commands
+	* Lots of other contributed patches
+
+version 1.5.9
+	* Add ability to get a particular sensor by name
+	* Add ability to set a particular sensor threshold
+	* Add support for displaying V2 channel authentication levels
+	* Add README for rrdtool scripts in contrib directory
+	* Improve lan interface retry handling
+	* Support prompting for password or reading from environment
+	* Move chaninfo command into channel subcommand
+	* Fix reservation ID handling when two sessions open to BMC
+	* Fix reading of large FRU data
+	* Add configure option for changing binary to ipmiadm for Solaris
+	* Fix compile problem on Solaris 8
+
+version 1.5.8
+	* Enable static compilation of interfaces
+	* Fix types to be 64-bit safe
+	* Fix compilation problems on Solaris
+	* Fix multiple big-endian problems for Solaris/SPARC
+	* Fix channel access to save settings to NVRAM
+	* Set channel privilege limit to ADMIN during "access on"
+	* Enable gratuitous ARP in bmcautoconf.sh
+	* Add support for Linux kernel panic messages in SEL output
+	* Add support for type 3 SDR records
+
+version 1.5.7
+	* Add IPMIv1.5 eratta fixes
+	* Additions to FRU printing and FRU multirecords
+	* Better handling of SDR printing
+	* Contrib scripts for creating rrdtool graphs
+
+version 1.5.6
+	* Fix SEL event decoding for generic events
+	* Handle empty SEL gracefully when doing "sel list"
+	* Fix sdr handling of sensors that do not return a reading
+	* Fix for CSV display of sensor readings/units from Fredrik Öhrn
+
+version 1.5.5
+	* Add -U option for setting LAN username
+	* Fix -v usage for plugin interfaces
+
+version 1.5.4
+	* Put interface plugin API into library
+	* Fix ipmievd
+
+version 1.5.3
+	* Add -g option to work with grizzly bmc
+
+version 1.5.2
+	* Add support for setting gratuitous arp interval
+
+version 1.5.1
+	* Better SEL support
+	* Fix display bug in SDR list
+
+version 1.5.0
+	* More robust UDP packet handling
+	* Add Intel IMB driver support
+	* Use autoconf/automake/libtool
+

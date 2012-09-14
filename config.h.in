@@ -1,0 +1,235 @@
+/* config.h.in.  Generated from configure.in by autoheader.  */
+
+/* Define if building universal (internal helper macro) */
+#undef AC_APPLE_UNIVERSAL_BUILD
+
+/* Define to 1 to enable all command line options. */
+#undef ENABLE_ALL_OPTIONS
+
+/* Define to 1 for extra file security. */
+#undef ENABLE_FILE_SECURITY
+
+/* Define to 1 to enable OpenIPMI interface dual bridge support */
+#undef ENABLE_INTF_OPEN_DUAL_BRIDGE
+
+/* Define to 1 if you have the `alarm' function. */
+#undef HAVE_ALARM
+
+/* Define to 1 if you have the <arpa/inet.h> header file. */
+#undef HAVE_ARPA_INET_H
+
+/* Define to 1 if you have the <byteswap.h> header file. */
+#undef HAVE_BYTESWAP_H
+
+/* Define to 1 if libcrypto supports MD2. */
+#undef HAVE_CRYPTO_MD2
+
+/* Define to 1 if libcrypto supports MD5. */
+#undef HAVE_CRYPTO_MD5
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#undef HAVE_FCNTL_H
+
+/* Define to 1 if you have the <sys/ipmi.h> header file. */
+#undef HAVE_FREEBSD_IPMI_H
+
+/* Define to 1 if you have the `gethostbyname' function. */
+#undef HAVE_GETHOSTBYNAME
+
+/* Define to 1 if you have the `getpassphrase' function. */
+#undef HAVE_GETPASSPHRASE
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <linux/compiler.h> header file. */
+#undef HAVE_LINUX_COMPILER_H
+
+/* Define to 1 if your system has a GNU libc compatible `malloc' function, and
+   to 0 otherwise. */
+#undef HAVE_MALLOC
+
+/* Define to 1 if you have the `memmove' function. */
+#undef HAVE_MEMMOVE
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `memset' function. */
+#undef HAVE_MEMSET
+
+/* Define to 1 if you have the <netdb.h> header file. */
+#undef HAVE_NETDB_H
+
+/* Define to 1 if you have the <netinet/in.h> header file. */
+#undef HAVE_NETINET_IN_H
+
+/* Define to 1 if you have the <linux/ipmi.h> header file. */
+#undef HAVE_OPENIPMI_H
+
+/* Define to 1 if you have the <paths.h> header file. */
+#undef HAVE_PATHS_H
+
+/* Define to 1 if you need to use #pragma pack instead of __attribute__
+   ((packed)) */
+#undef HAVE_PRAGMA_PACK
+
+/* Define to 1 if readline present. */
+#undef HAVE_READLINE
+
+/* Define to 1 if you have the `select' function. */
+#undef HAVE_SELECT
+
+/* Define to 1 if you have the `socket' function. */
+#undef HAVE_SOCKET
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strchr' function. */
+#undef HAVE_STRCHR
+
+/* Define to 1 if you have the `strdup' function. */
+#undef HAVE_STRDUP
+
+/* Define to 1 if you have the `strerror' function. */
+#undef HAVE_STRERROR
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/byteorder.h> header file. */
+#undef HAVE_SYS_BYTEORDER_H
+
+/* Define to 1 if you have the <sys/ioctl.h> header file. */
+#undef HAVE_SYS_IOCTL_H
+
+/* Define to 1 if you have the <sys/select.h> header file. */
+#undef HAVE_SYS_SELECT_H
+
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#undef HAVE_SYS_SOCKET_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have <sys/termios.h>. */
+#undef HAVE_SYS_TERMIOS_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have <termios.h>. */
+#undef HAVE_TERMIOS_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 to enable Solaris 10 BMC interface. */
+#undef IPMI_INTF_BMC
+
+/* Define to 1 to enable FreeIPMI interface. */
+#undef IPMI_INTF_FREE
+
+/* Define to 1 for FreeIPMI 0.3.0. */
+#undef IPMI_INTF_FREE_0_3_0
+
+/* Define to 1 for FreeIPMI 0.4.0. */
+#undef IPMI_INTF_FREE_0_4_0
+
+/* Define to 1 for FreeIPMI 0.5.0. */
+#undef IPMI_INTF_FREE_0_5_0
+
+/* Define to 1 for FreeIPMI 0.6.0. */
+#undef IPMI_INTF_FREE_0_6_0
+
+/* Define to 1 to enable FreeIPMI Bridging Support. */
+#undef IPMI_INTF_FREE_BRIDGING
+
+/* Define to 1 to enable Intel IMB interface. */
+#undef IPMI_INTF_IMB
+
+/* Define to 1 to enable LAN IPMIv1.5 interface. */
+#undef IPMI_INTF_LAN
+
+/* Define to 1 to enable LAN+ IPMIv2 interface. */
+#undef IPMI_INTF_LANPLUS
+
+/* Define to 1 to enable Solaris 9 LIPMI interface. */
+#undef IPMI_INTF_LIPMI
+
+/* Define to 1 to enable Linux OpenIPMI interface. */
+#undef IPMI_INTF_OPEN
+
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
+#undef LT_OBJDIR
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to the type of arg 1 for `select'. */
+#undef SELECT_TYPE_ARG1
+
+/* Define to the type of args 2, 3 and 4 for `select'. */
+#undef SELECT_TYPE_ARG234
+
+/* Define to the type of arg 5 for `select'. */
+#undef SELECT_TYPE_ARG5
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#  undef WORDS_BIGENDIAN
+# endif
+#endif
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#undef inline
+#endif
+
+/* Define to rpl_malloc if the replacement function should be used. */
+#undef malloc
