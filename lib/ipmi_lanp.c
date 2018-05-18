@@ -185,7 +185,7 @@ get_lan_param_select(struct ipmi_intf * intf, uint8_t chan, int param, int selec
  * @chan:    ipmi channel
  * @param:   lan parameter id
  */
-static struct lan_param *
+struct lan_param *
 get_lan_param(struct ipmi_intf * intf, uint8_t chan, int param)
 {
 	return get_lan_param_select(intf, chan, param, 0);
